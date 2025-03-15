@@ -2,13 +2,21 @@
 
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Models\User;
 
 Route::get('/', function () {
     return view('welcome');
 });
 
 Route::get('/dashboard', function () {
-    return view('dashboard');
+    $user = Auth::user();
+
+    if ($user->role === 'admin') {
+        $usuarios = User::all(); // Obtener todos los usuarios
+        return view('dashboard', compact('usuarios'));
+    }
+
+    return view('dashboard'); // Si no es admin carga vista de invitado
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
