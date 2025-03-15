@@ -16,8 +16,19 @@ Route::get('/dashboard', function () {
         return view('dashboard', compact('usuarios'));
     }
 
-    return view('dashboard'); // Si no es admin carga vista de invitado
+    return view('dashboard', ); // Si no es admin carga vista de invitado
 })->middleware(['auth', 'verified'])->name('dashboard');
+
+// Nueva ruta exclusiva de admin----------------------------------------------------------------------------------
+Route::get('/usuarios', function () {
+    if (auth()->user()->role !== 'admin') {
+        abort(403, 'No autorizado');
+    }
+
+    $usuarios = User::all();
+    return view('users', compact('usuarios'));
+})->middleware(['auth'])->name('users.index');
+//----------------------------------------------------------------------------------------------------------------
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
