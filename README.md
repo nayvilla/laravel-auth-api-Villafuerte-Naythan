@@ -21,6 +21,7 @@ cd proyecto
 
 2️⃣ **Instalar dependencias:**
 ```bash
+cd actividad2
 composer install
 ```
 
