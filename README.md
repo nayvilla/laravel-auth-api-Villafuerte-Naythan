@@ -170,7 +170,6 @@ Content-Type: application/json
 - Laravel Sanctum maneja la autenticación API con tokens Bearer.
 - El acceso a `/api/user` requiere un token válido generado en el login.
 - Todas las rutas de la API están dentro del middleware `api`.
-- La protección contra ataques de fuerza bruta está activada con `throttle`.
 
 ---
 
