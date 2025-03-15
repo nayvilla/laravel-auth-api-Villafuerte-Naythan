@@ -17,7 +17,9 @@ Este proyecto implementa autenticación de usuarios utilizando **Laravel Breeze*
    ```bash
    git clone https://github.com/usuario/proyecto.git
    cd proyecto
+   ```
 
 2️⃣ **Instalar dependencias:**
     ```bash
     composer install
+    ```
